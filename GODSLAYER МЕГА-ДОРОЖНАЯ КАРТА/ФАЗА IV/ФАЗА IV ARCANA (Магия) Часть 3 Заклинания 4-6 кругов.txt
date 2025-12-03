@@ -1,0 +1,618 @@
+ФАЗА IV: ARCANA (Магия)
+Часть 3: Заклинания 4-6 кругов
+💫 ЗАКЛИНАНИЯ 4 КРУГА (60 видов)
+Особенности 4 круга
+Параметр	Значение
+Доступ	Полные заклинатели с 7 уровня
+Мощь	Серьёзные боевые и контрольные эффекты
+Ключевые заклинания	Polymorph, Banishment, Greater Invisibility
+Ячеек на 7 уровне	1
+Максимум ячеек (20 ур.)	3
+Боевые заклинания 4 круга (20)
+ID	Название	Школа	Время	Дистанция	Урон/Эффект	Классы
+spell_ice_storm	Ледяная буря	Evocation	Действие	300 ft	2d8 дробящий + 4d6 холод (20 ft цилиндр)	Druid, Sorcerer, Wizard
+spell_fire_shield	Огненный щит	Evocation	Действие	Self	Сопротивление холоду/огню + 2d8 ответный урон	Wizard
+spell_wall_fire	Стена огня	Evocation	Действие	120 ft	5d8 огонь при проходе, односторонняя	Druid, Sorcerer, Wizard
+spell_blight	Усыхание	Necromancy	Действие	30 ft	8d8 некротический (растения авто-макс)	Druid, Sorcerer, Warlock, Wizard
+spell_phantasmal_killer	Фантомный убийца	Illusion	Действие	120 ft	4d10 психический/раунд, Frightened	Wizard
+spell_vitriolic_sphere	Едкая сфера	Evocation	Действие	150 ft	10d4 кислота + 5d4 конец хода (20 ft)	Sorcerer, Wizard
+spell_storm_sphere	Сфера бури	Evocation	Действие	150 ft	2d6 дробящий + 4d6 молния бонусным	Sorcerer, Wizard
+spell_sickening_radiance	Болезненное сияние	Evocation	Действие	120 ft	4d10 сияние + истощение (30 ft)	Sorcerer, Warlock, Wizard
+spell_shadow_moil	Теневой покров	Necromancy	Действие	Self	Тусклый свет, 2d8 некр. атакующим	Warlock
+spell_elemental_bane	Стихийная погибель	Transmutation	Действие	90 ft	Убрать сопротивление + 2d6 урона	Druid, Warlock, Wizard
+spell_staggering_smite	Ошеломляющая кара	Evocation	Бонусное	Self	+4d6 психический + ошеломление	Paladin
+spell_guardian_faith	Страж веры	Conjuration	Действие	30 ft	20 урона/реакция, всего 60 HP	Cleric
+spell_spirit_shroud_4	Духовный саван (4)	Necromancy	Бонусное	Self	+2d8 урон к атакам в 10 ft	Cleric, Paladin, Warlock, Wizard
+spell_gravity_sinkhole	Гравитационная воронка	Evocation	Действие	120 ft	5d10 силовой + притяжение к центру	Wizard
+spell_raulothims_psychic_lance	Психическое копьё Раулотима	Enchantment	Действие	120 ft	7d6 психический + incapacitated	Bard, Sorcerer, Warlock, Wizard
+spell_evards_black_tentacles	Чёрные щупальца Эварда	Conjuration	Действие	90 ft	Restrained + 3d6 дробящий (20 ft)	Wizard
+spell_grasping_vine	Хватающая лоза	Conjuration	Бонусное	30 ft	Притягивание 20 ft, конц.	Druid, Ranger
+spell_conjure_minor_elementals	Призыв малых элементалей	Conjuration	1 мин	90 ft	Призвать элементалей CR≤2	Druid, Wizard
+spell_conjure_woodland_beings	Призыв лесных существ	Conjuration	Действие	60 ft	Призвать фей CR≤2	Druid, Ranger
+spell_summon_elemental	Призыв элементаля	Conjuration	Действие	90 ft	Призвать элементаля-духа	Druid, Ranger, Wizard
+Контрольные заклинания 4 круга (15)
+ID	Название	Школа	Время	Длительность	Эффект	Классы
+spell_banishment	Изгнание	Abjuration	Действие	Конц., 1 мин	Изгнать на другой план	Cleric, Paladin, Sorcerer, Warlock, Wizard
+spell_confusion	Смятение	Enchantment	Действие	Конц., 1 мин	Случайные действия (10 ft)	Bard, Druid, Sorcerer, Wizard
+spell_dominate_beast	Доминирование над зверем	Enchantment	Действие	Конц., 1 мин	Полный контроль зверя	Druid, Sorcerer
+spell_compulsion	Принуждение	Enchantment	Действие	Конц., 1 мин	Заставить двигаться	Bard
+spell_charm_monster	Очарование чудовища	Enchantment	Действие	1 час	Очаровать любое существо	Bard, Druid, Sorcerer, Warlock, Wizard
+spell_polymorph	Превращение	Transmutation	Действие	Конц., 1 час	Превратить в зверя (CR≤уровень)	Bard, Druid, Sorcerer, Wizard
+spell_giant_insect	Гигантское насекомое	Transmutation	Действие	Конц., 10 мин	Увеличить насекомых	Druid
+spell_control_water	Власть над водами	Transmutation	Действие	Конц., 10 мин	Манипуляция водой (100 ft куб)	Cleric, Druid, Wizard
+spell_hallucinatory_terrain	Мираж	Illusion	10 мин	24 часа	Изменить вид местности (150 ft)	Bard, Druid, Warlock, Wizard
+spell_dimension_door	Врата измерений	Conjuration	Действие	500 ft	Телепорт + 1 существо	Bard, Sorcerer, Warlock, Wizard
+spell_locate_creature	Поиск существа	Divination	Действие	Конц., 1 час	Найти существо 1000 ft	Bard, Cleric, Druid, Paladin, Ranger, Wizard
+spell_arcane_eye	Магический глаз	Divination	Действие	Конц., 1 час	Невидимый глаз-разведчик	Wizard
+spell_divination	Гадание	Divination	Ритуал	Мгновенно	Вопрос божеству	Cleric
+spell_private_sanctum	Частное убежище Морденкайнена	Abjuration	10 мин	24 часа	Защита области от шпионажа	Wizard
+spell_otiluke_sphere	Упругая сфера Отилюка	Evocation	Действие	Конц., 1 мин	Заточить в сфере силы	Wizard
+Защитные и усиливающие 4 круга (15)
+ID	Название	Школа	Время	Длительность	Эффект	Классы
+spell_greater_invisibility	Высшая невидимость	Illusion	Действие	Конц., 1 мин	Невидимость даже при атаках	Bard, Sorcerer, Wizard
+spell_stoneskin	Каменная кожа	Abjuration	Действие	Конц., 1 час	Сопротивление немагич. физ. урону	Druid, Ranger, Sorcerer, Wizard
+spell_freedom_movement	Свобода перемещения	Abjuration	Действие	1 час	Иммунитет к замедлению/параличу	Bard, Cleric, Druid, Ranger
+spell_death_ward	Защита от смерти	Abjuration	Действие	8 часов	При 0 HP → 1 HP (один раз)	Cleric, Paladin
+spell_aura_life	Аура жизни	Abjuration	Действие	Конц., 10 мин	30 ft: сопротивление некр., стабилизация	Paladin
+spell_aura_purity	Аура чистоты	Abjuration	Действие	Конц., 10 мин	30 ft: нельзя отравить/болезнь/ослепить/оглушить	Paladin
+spell_find_greater_steed	Поиск благородного скакуна	Conjuration	10 мин	Мгновенно	Призвать грифона/пегаса/etc.	Paladin
+spell_fabricate	Изготовление	Transmutation	10 мин	Мгновенно	Создать предмет из материалов	Wizard
+spell_stone_shape	Формовка камня	Transmutation	Действие	Мгновенно	Изменить камень (5 ft куб)	Cleric, Druid, Wizard
+spell_leomunds_secret_chest	Тайный сундук Леомунда	Conjuration	Действие	Мгновенно	Сундук в Ethereal Plane	Wizard
+spell_faithful_hound	Сторожевой пёс Морденкайнена	Conjuration	Действие	8 часов	Невидимый пёс-охранник	Wizard
+spell_resilient_sphere	Упругая сфера	Evocation	Действие	Конц., 1 мин	Защитная сфера	Wizard
+spell_fire_shield	Огненный щит	Evocation	Действие	10 мин	Сопротивление + ответный урон	Wizard
+spell_watery_sphere	Водяная сфера	Conjuration	Действие	Конц., 1 мин	Заточить в воде, утопление	Druid, Sorcerer, Wizard
+spell_galder_speedy_courier	Быстрый курьер Галдера	Conjuration	Действие	10 мин	Телепорт маленького предмета	Warlock, Wizard
+Утилитарные и лечебные 4 круга (10)
+ID	Название	Школа	Время	Длительность	Эффект	Классы
+spell_divination	Гадание	Divination	Ритуал	Мгновенно	Вопрос божеству (ответ до 25 слов)	Cleric
+spell_speak_plants	Разговор с растениями	Transmutation	Действие	30 мин	Общение с растениями	Bard, Druid
+spell_conjure_shadow_demon	Призыв теневого демона	Conjuration	1 мин	Конц., 1 час	Опасный призыв	Wizard
+spell_mordenkainens_faithful_hound	Верный пёс	Conjuration	Действие	8 часов	Охранник-сигнализация	Wizard
+spell_summon_greater_demon	Призыв великого демона	Conjuration	Действие	Конц., 1 час	Призыв мощного демона (опасно)	Warlock, Wizard
+spell_fount_moonlight	Источник лунного света	Evocation	Действие	Конц., 1 мин	30 ft сияние + бонусный moonbeam	Druid
+⭐ ЗАКЛИНАНИЯ 5 КРУГА (55 видов)
+Особенности 5 круга
+Параметр	Значение
+Доступ	Полные заклинатели с 9 уровня
+Мощь	Мощнейшие обычные заклинания, начало "эпических"
+Ключевые заклинания	Wall of Force, Raise Dead, Hold Monster
+Ячеек на 9 уровне	1
+Максимум ячеек (20 ур.)	3
+Боевые заклинания 5 круга (18)
+ID	Название	Школа	Время	Дистанция	Урон/Эффект	Классы
+spell_cone_cold	Конус холода	Evocation	Действие	Self (60 ft конус)	8d8 холод, CON half	Sorcerer, Wizard
+spell_cloudkill	Облако смерти	Conjuration	Действие	120 ft	5d8 яд/раунд (20 ft сфера), движется	Sorcerer, Wizard
+spell_flame_strike	Небесный огонь	Evocation	Действие	60 ft	4d6 огонь + 4d6 сияние (10 ft цилиндр)	Cleric
+spell_insect_plague	Нашествие насекомых	Conjuration	Действие	300 ft	4d10 колющий (20 ft сфера) + сложн. местность	Cleric, Druid, Sorcerer
+spell_destructive_wave	Разрушительная волна	Evocation	Действие	Self (30 ft)	5d6 грома + 5d6 сияние/некротический + prone	Paladin
+spell_banishing_smite	Изгоняющая кара	Abjuration	Бонусное	Self	+5d10 силовой, <50 HP = изгнание	Paladin
+spell_circle_death	Круг смерти	Necromancy	Действие	150 ft	8d6 некротический (60 ft сфера)	Sorcerer, Warlock, Wizard
+spell_enervation	Истощение	Necromancy	Действие	60 ft	4d8 некротический/раунд + heal half	Sorcerer, Warlock, Wizard
+spell_negative_energy_flood	Поток негативной энергии	Necromancy	Действие	60 ft	5d12 некротический, убитые = зомби	Warlock, Wizard
+spell_steel_wind_strike	Удар стального ветра	Conjuration	Действие	30 ft	6d10 силовой каждой из 5 целей + телепорт	Ranger, Wizard
+spell_holy_weapon	Святое оружие	Evocation	Бонусное	Касание	+2d8 сияние, бонусный взрыв	Cleric, Paladin
+spell_maelstrom	Водоворот	Evocation	Действие	120 ft	6d6 дробящий + притяжение (30 ft)	Druid
+spell_immolation	Испепеление	Evocation	Действие	90 ft	8d6 огонь + 4d6/раунд пока горит	Sorcerer, Wizard
+spell_synaptic_static	Синаптическая статика	Enchantment	Действие	120 ft	8d6 психический + -1d6 к атакам/проверкам/конц.	Bard, Sorcerer, Warlock, Wizard
+spell_wrath_nature	Гнев природы	Evocation	Действие	120 ft	Деревья атакуют, камни = сложн. местность, лианы = restrained	Druid, Ranger
+spell_conjure_volley	Залповый призыв	Conjuration	Действие	150 ft	8d8 (тип боеприпаса) в 40 ft цилиндре	Ranger
+spell_swift_quiver	Быстрый колчан	Transmutation	Бонусное	Касание	2 атаки луком как бонусное действие	Ranger
+spell_danse_macabre	Пляска смерти	Necromancy	Действие	60 ft	Поднять до 5 зомби/скелетов	Warlock, Wizard
+Контрольные заклинания 5 круга (15)
+ID	Название	Школа	Время	Длительность	Эффект	Классы
+spell_hold_monster	Удержание чудовища	Enchantment	Действие	Конц., 1 мин	Парализовать любое существо	Bard, Sorcerer, Warlock, Wizard
+spell_dominate_person	Доминирование над личностью	Enchantment	Действие	Конц., 1 мин	Полный контроль гуманоида	Bard, Sorcerer, Wizard
+spell_geas	Обет	Enchantment	1 мин	30 дней	Принуждение к задаче, 5d10 псих. за нарушение	Bard, Cleric, Druid, Paladin, Wizard
+spell_modify_memory	Изменение памяти	Enchantment	Действие	Конц., 1 мин	Изменить воспоминания (10 мин)	Bard, Wizard
+spell_wall_force	Стена силы	Evocation	Действие	Конц., 10 мин	Непробиваемая стена	Wizard
+spell_telekinesis	Телекинез	Transmutation	Действие	Конц., 10 мин	Двигать 1000 lbs или атаковать телекинезом	Sorcerer, Wizard
+spell_wall_stone	Каменная стена	Evocation	Действие	Конц., 10 мин	Стена камня (10 панелей)	Druid, Sorcerer, Wizard
+spell_wall_light	Стена света	Evocation	Действие	Конц., 10 мин	Слепящая стена + 4d8 сияние	Sorcerer, Warlock, Wizard
+spell_bigbys_hand	Рука Бигби	Evocation	Действие	Конц., 1 мин	Огромная рука (4d8 удар, захват, и т.д.)	Wizard
+spell_animate_objects	Оживление предметов	Transmutation	Действие	Конц., 1 мин	Оживить до 10 предметов	Bard, Sorcerer, Wizard
+spell_creation	Создание	Illusion	1 мин	Специально	Создать неживой предмет (временно)	Sorcerer, Wizard
+spell_control_winds	Власть над ветром	Transmutation	Действие	Конц., 1 час	Манипуляция ветром 100 ft куб	Druid, Sorcerer, Wizard
+spell_far_step	Дальний шаг	Conjuration	Бонусное	Конц., 1 мин	Телепорт 60 ft каждый ход бонусным	Sorcerer, Warlock, Wizard
+spell_seeming	Подобие	Illusion	Действие	8 часов	Изменить внешность любого количества существ	Bard, Sorcerer, Wizard
+spell_passwall	Проход сквозь стену	Transmutation	Действие	1 час	Проход через стену	Wizard
+Защитные и восстанавливающие 5 круга (12)
+ID	Название	Школа	Время	Длительность	Эффект	Классы
+spell_greater_restoration	Высшее восстановление	Abjuration	Действие	Мгновенно	Снять любое состояние, -ATR, HP max, petrify	Bard, Cleric, Druid
+spell_raise_dead	Воскрешение	Necromancy	1 час	Мгновенно	Воскресить (≤10 дней мёртв), -4 ко всему	Bard, Cleric, Paladin
+spell_mass_cure_wounds	Множественное лечение ран	Evocation	Действие	60 ft	3d8+мод исцеление (до 6 существ)	Bard, Cleric, Druid
+spell_reincarnate	Реинкарнация	Transmutation	1 час	Мгновенно	Воскресить в новом теле (≤10 дней)	Druid
+spell_antilife_shell	Антижизненный панцирь	Abjuration	Действие	Конц., 1 час	10 ft барьер для живых	Druid
+spell_dispel_evil_good	Рассеивание добра и зла	Abjuration	Действие	Конц., 1 мин	Отменить очарование/страх/одержимость	Cleric, Paladin
+spell_circle_power	Круг силы	Abjuration	Действие	Конц., 10 мин	30 ft: преим. спасброски vs магию, half→0	Paladin
+spell_hallow	Освящение	Evocation	24 часа	Пока не рассеяно	Защитить область, особый эффект	Cleric
+spell_planar_binding	Планарные узы	Abjuration	1 час	24 часа	Привязать призванное существо к службе	Bard, Cleric, Druid, Wizard
+spell_telepathic_bond	Телепатическая связь	Divination	Действие (ритуал)	1 час	Телепатия между 8 существами	Wizard
+spell_commune	Общение	Divination	1 мин (ритуал)	1 мин	3 вопроса божеству (да/нет)	Cleric
+spell_commune_nature	Общение с природой	Divination	1 мин (ритуал)	Мгновенно	Знание о территории 3 мили	Druid, Ranger
+Призывающие и трансформационные 5 круга (10)
+ID	Название	Школа	Время	Длительность	Эффект	Классы
+spell_conjure_elemental	Призыв элементаля	Conjuration	1 мин	Конц., 1 час	Призвать элементаля CR≤5	Druid, Wizard
+spell_infernal_calling	Адский призыв	Conjuration	1 мин	Конц., 1 час	Призвать дьявола CR≤6	Warlock, Wizard
+spell_summon_celestial	Призыв небожителя	Conjuration	Действие	Конц., 1 час	Призвать небесного духа	Cleric, Paladin
+spell_summon_draconic_spirit	Призыв дракона	Conjuration	Действие	Конц., 1 час	Призвать духа дракона	Druid, Sorcerer, Wizard
+spell_awaken	Пробуждение	Transmutation	8 часов	Мгновенно	Дать разум зверю/растению (INT 10)	Bard, Druid
+spell_tree_stride	Древесный путь	Conjuration	Действие	Конц., 1 мин	Телепорт через деревья	Druid, Ranger
+spell_scrying	Наблюдение	Divination	10 мин	Конц., 10 мин	Видеть существо на любом расстоянии	Bard, Cleric, Druid, Warlock, Wizard
+spell_contact_other_plane	Контакт с иным миром	Divination	1 мин (ритуал)	1 мин	5 вопросов сущности (опасно, DC 15 INT)	Warlock, Wizard
+spell_legend_lore	Познание легенд	Divination	10 мин	Мгновенно	Узнать о предмете/месте/существе	Bard, Cleric, Wizard
+spell_dream	Сновидение	Illusion	1 мин	8 часов	Послание во сне (или кошмар 3d6)	Bard, Warlock, Wizard
+🌟 ЗАКЛИНАНИЯ 6 КРУГА (50 видов)
+Особенности 6 круга
+Параметр	Значение
+Доступ	Полные заклинатели с 11 уровня
+Мощь	Значительные эффекты, начало ограничения 1/день
+Ключевые заклинания	Disintegrate, Chain Lightning, True Seeing
+Ячеек на 11 уровне	1
+Максимум ячеек (20 ур.)	2
+Боевые заклинания 6 круга (16)
+ID	Название	Школа	Время	Дистанция	Урон/Эффект	Классы
+spell_disintegrate	Распад	Transmutation	Действие	60 ft	10d6+40 силовой, 0 HP = пыль	Sorcerer, Wizard
+spell_chain_lightning	Цепная молния	Evocation	Действие	150 ft	10d8 электричество (до 4 целей)	Sorcerer, Wizard
+spell_sunbeam	Солнечный луч	Evocation	Действие	Self (60 ft линия)	6d8 сияние + слепота, повторяемый	Druid, Sorcerer, Wizard
+spell_harm	Вред	Necromancy	Действие	60 ft	14d6 некротический (HP max не ниже 1)	Cleric
+spell_circle_death	Круг смерти	Necromancy	Действие	150 ft	8d6 некротический (60 ft сфера)	Sorcerer, Warlock, Wizard
+spell_ottos_dance	Непреодолимая пляска Отто	Enchantment	Действие	30 ft	Цель танцует (0 скорость, помеха, провоцирует)	Bard, Wizard
+spell_eyebite	Злобный взгляд	Necromancy	Действие	Self	Сон/Паника/Болезнь каждый ход	Bard, Sorcerer, Warlock, Wizard
+spell_mental_prison	Ментальная тюрьма	Illusion	Действие	60 ft	5d10 псих., 10d10 при движении, restrained	Sorcerer, Warlock, Wizard
+spell_bones_earth	Кости земли	Transmutation	Действие	120 ft	6 колонн 5×30 ft, 6d6 дробящий	Druid
+spell_blade_barrier	Клинковый барьер	Evocation	Действие	90 ft	Стена клинков, 6d10 рубящий	Cleric
+spell_freezing_sphere	Ледяная сфера Отилюка	Evocation	Действие	300 ft	10d6 холод (60 ft сфера), можно хранить	Wizard
+spell_gravity_fissure	Гравитационный разлом	Evocation	Действие	Self (100 ft линия)	8d8 силовой + притяжение + падение	Wizard
+spell_investiture_flame	Облачение пламени	Transmutation	Действие	Self	Иммунитет огню, урон 1d10, Fire Bolt усилен	Druid, Sorcerer, Warlock, Wizard
+spell_investiture_ice	Облачение льда	Transmutation	Действие	Self	Иммунитет холоду, Cone of Cold 4d6	Druid, Sorcerer, Warlock, Wizard
+spell_investiture_stone	Облачение камня	Transmutation	Действие	Self	Сопрот. немагич. физ., передвижение через камень	Druid, Sorcerer, Warlock, Wizard
+spell_investiture_wind	Облачение ветра	Transmutation	Действие	Self	Дальние атаки помеха, полёт 60 ft	Druid, Sorcerer, Warlock, Wizard
+Контрольные и защитные 6 круга (18)
+ID	Название	Школа	Время	Длительность	Эффект	Классы
+spell_mass_suggestion	Массовое внушение	Enchantment	Действие	24 часа	Внушение 12 существам	Bard, Sorcerer, Warlock, Wizard
+spell_true_seeing	Истинное зрение	Divination	Действие	1 час	Видеть сквозь иллюзии, тьму, невидимость, эфир	Bard, Cleric, Sorcerer, Warlock, Wizard
+spell_globe_invulnerability	Сфера неуязвимости	Abjuration	Действие	Конц., 1 мин	10 ft: заклинания ≤5 круга не работают	Sorcerer, Wizard
+spell_antimagic_field	Зона антимагии	Abjuration	Действие	Конц., 1 час	10 ft: вся магия подавлена	Cleric, Wizard
+spell_word_recall	Слово возврата	Conjuration	Действие	Мгновенно	Телепорт до 5 существ в святилище	Cleric
+spell_forbiddance	Запрет	Abjuration	10 мин	1 день	Блокировать телепортацию + 5d10 урон типам	Cleric
+spell_wind_walk	Хождение по ветру	Transmutation	1 мин	8 часов	Газообразная форма, скорость 300 ft	Druid
+spell_transport_via_plants	Транспортировка растениями	Conjuration	Действие	1 раунд	Телепорт через растения любого расстояния	Druid
+spell_find_the_path	Поиск пути	Divination	1 мин	Конц., 1 день	Знать кратчайший путь к месту	Bard, Cleric, Druid
+spell_contingency	Предзнаменование	Evocation	10 мин	10 дней	Заклинание срабатывает при условии	Wizard
+spell_programmed_illusion	Запрограммированная иллюзия	Illusion	Действие	Пока не рассеяно	Иллюзия срабатывает при условии	Bard, Wizard
+spell_guards_wards	Охранные руны	Abjuration	10 мин	24 часа	Множество защит области	Bard, Wizard
+spell_magic_jar	Волшебный сосуд	Necromancy	1 мин	Пока не рассеяно	Переселение в тело другого	Wizard
+spell_planar_ally	Планарный союзник	Conjuration	10 мин	Мгновенно	Призвать существо с другого плана (переговоры)	Cleric
+spell_drawmijs_instant_summons	Мгновенный призыв Дроумиджа	Conjuration	1 мин (ритуал)	Пока не сработает	Телепортировать помеченный предмет к себе	Wizard
+spell_scatter	Рассеивание	Conjuration	Действие	120 ft	Телепортировать до 5 существ на 120 ft	Sorcerer, Warlock, Wizard
+spell_soul_cage	Клетка души	Necromancy	Реакция	8 часов	Захватить душу умирающего, использовать	Warlock, Wizard
+spell_tethers_grip	Хватка Тетера	Evocation	Действие	60 ft	Телекинетический захват, 4d6 силовой	Sorcerer, Warlock, Wizard
+Лечебные и восстанавливающие 6 круга (8)
+ID	Название	Школа	Время	Длительность	Эффект	Классы
+spell_heal	Исцеление	Evocation	Действие	Мгновенно	70 HP + снять слепоту/глухоту/болезни	Cleric, Druid
+spell_heroes_feast	Пир героев	Conjuration	10 мин	Мгновенно	+2d10 HP max, иммун яд/страх, преим. WIS	Cleric, Druid
+spell_word_heal	Слово исцеления	Evocation	Бонусное	60 ft	70 HP + снять состояния	Cleric
+spell_primordial_ward	Первородная защита	Abjuration	Действие	Конц., 1 мин	Сопротивление стихийному, поглощение→иммунитет	Druid
+spell_regenerate	Регенерация	Transmutation	1 мин	1 час	4d8+15 HP + 1 HP/раунд + отращивание	Bard, Cleric, Druid
+spell_create_undead	Создание нежити	Necromancy	1 мин	Мгновенно	Поднять 3 гуля	Cleric, Warlock, Wizard
+spell_flesh_stone	Плоть в камень	Transmutation	Действие	Конц., 1 мин	Окаменение (3 провала CON)	Warlock, Wizard
+spell_tenser_transformation	Трансформация Тензера	Transmutation	Действие	Конц., 10 мин	+50 temp HP, доп. атака, преим. оружие, CON спас	Wizard
+Призывающие 6 круга (8)
+ID	Название	Школа	Время	Длительность	Эффект	Классы
+spell_conjure_fey	Призыв феи	Conjuration	1 мин	Конц., 1 час	Призвать фею CR≤6	Druid, Warlock
+spell_summon_fiend	Призыв исчадия	Conjuration	Действие	Конц., 1 час	Призвать духа исчадия	Warlock, Wizard
+spell_create_homunculus	Создание гомункула	Transmutation	1 час	Мгновенно	Создать гомункула-слугу	Wizard
+spell_arcane_gate	Арканные врата	Conjuration	Действие	Конц., 10 мин	Портал между двумя точками 500 ft	Sorcerer, Warlock, Wizard
+spell_move_earth	Движение земли	Transmutation	Действие	Конц., 2 часа	Изменить ландшафт (40 ft куб)	Druid, Sorcerer, Wizard
+spell_wall_ice	Ледяная стена	Evocation	Действие	Конц., 10 мин	Стена льда 10d6 холод при разрушении	Wizard
+spell_wall_thorns	Стена шипов	Conjuration	Действие	Конц., 10 мин	60 ft стена, 7d8 колющий	Druid
+spell_create_undead	Создание нежити	Necromancy	1 мин	Мгновенно	Создать до 3 гулей	Cleric, Warlock, Wizard
+📋 JSON СХЕМЫ
+Схема заклинания превращения
+JSON
+
+{
+    "spell": {
+        "id": "spell_polymorph",
+        "name_key": "SPELL_POLYMORPH_NAME",
+        "desc_key": "SPELL_POLYMORPH_DESC",
+        
+        "level": 4,
+        "school": "school_transmutation",
+        
+        "casting_time": {
+            "type": "action",
+            "value": 1
+        },
+        
+        "range": {
+            "type": "ranged",
+            "distance": 60,
+            "unit": "feet"
+        },
+        
+        "components": {
+            "verbal": true,
+            "somatic": true,
+            "material": {
+                "required": true,
+                "items": ["a caterpillar cocoon"],
+                "cost_gp": null,
+                "consumed": false
+            }
+        },
+        
+        "duration": {
+            "type": "time",
+            "value": 1,
+            "unit": "hour",
+            "concentration": true
+        },
+        
+        "targets": {
+            "type": "creature",
+            "count": 1,
+            "creature_type": ["any"],
+            "restrictions": [
+                "0 HP targets unaffected",
+                "Shapechangers immune",
+                "Unwilling: WIS save"
+            ]
+        },
+        
+        "effects": [
+            {
+                "type": "transformation",
+                "transform_into": {
+                    "category": "beast",
+                    "cr_limit": {
+                        "formula": "target_level_or_cr",
+                        "max": "target_level"
+                    }
+                },
+                "stat_replacement": {
+                    "replaced": ["str", "dex", "con", "hp", "speed", "senses", "skills"],
+                    "kept": ["personality", "alignment", "memories"]
+                },
+                "mental_stats": {
+                    "int": "beast_int",
+                    "wis": "beast_wis",
+                    "cha": "beast_cha"
+                },
+                "equipment": {
+                    "effect": "merges_or_drops",
+                    "nonfunctional": true
+                },
+                "hp_rules": {
+                    "on_transform": "gain_beast_hp",
+                    "on_revert": "return_to_previous_hp",
+                    "excess_damage": "carries_over"
+                },
+                "ability_limitations": [
+                    "Cannot cast spells",
+                    "Cannot speak (unless beast can)",
+                    "Cannot use equipment"
+                ],
+                "revert_conditions": [
+                    "Spell ends",
+                    "Drops to 0 HP",
+                    "Caster loses concentration",
+                    "Dispel Magic"
+                ]
+            }
+        ],
+        
+        "upcast": {
+            "available": false,
+            "note": "No additional benefits at higher levels"
+        },
+        
+        "classes": ["bard", "druid", "sorcerer", "wizard"],
+        
+        "tactical_notes": {
+            "offensive_use": [
+                "Turn enemy into harmless creature",
+                "Creature can still be killed (0 HP removes form)"
+            ],
+            "defensive_use": [
+                "Turn injured ally into high HP beast",
+                "Giant Ape (157 HP) is popular choice"
+            ],
+            "common_forms": [
+                {"name": "Giant Ape", "cr": 7, "hp": 157},
+                {"name": "Tyrannosaurus", "cr": 8, "hp": 136},
+                {"name": "Giant Elk", "cr": 2, "hp": 42},
+                {"name": "Cat", "cr": 0, "hp": 2}
+            ]
+        },
+        
+        "related_spells": [
+            {"id": "spell_true_polymorph", "relationship": "9th_level_upgrade"},
+            {"id": "spell_shapechange", "relationship": "self_version"}
+        ],
+        
+        "tags": ["transformation", "control", "utility", "beast", "concentration"]
+    }
+}
+Схема разрушительного заклинания
+JSON
+
+{
+    "spell": {
+        "id": "spell_disintegrate",
+        "name_key": "SPELL_DISINTEGRATE_NAME",
+        "desc_key": "SPELL_DISINTEGRATE_DESC",
+        
+        "level": 6,
+        "school": "school_transmutation",
+        
+        "casting_time": {
+            "type": "action",
+            "value": 1
+        },
+        
+        "range": {
+            "type": "ranged",
+            "distance": 60,
+            "unit": "feet"
+        },
+        
+        "components": {
+            "verbal": true,
+            "somatic": true,
+            "material": {
+                "required": true,
+                "items": ["a lodite and a pinch of dust"],
+                "cost_gp": null,
+                "consumed": false
+            }
+        },
+        
+        "duration": {
+            "type": "instantaneous"
+        },
+        
+        "targets": {
+            "type": "creature_or_object",
+            "count": 1,
+            "size_limit": {
+                "object": "large",
+                "object_max_dimension": "10 feet"
+            }
+        },
+        
+        "attack": {
+            "type": "ranged_spell_attack",
+            "on_hit": "apply_effects"
+        },
+        
+        "effects": [
+            {
+                "id": "disintegrate_damage",
+                "type": "damage",
+                "damage_dice": "10d6",
+                "damage_bonus": 40,
+                "damage_type": "force",
+                "save": {
+                    "ability": "dex",
+                    "on_success": "no_damage",
+                    "on_failure": "full_damage"
+                },
+                "special_rules": [
+                    {
+                        "id": "dust_death",
+                        "condition": "damage_reduces_to_0_hp",
+                        "effect": "target_and_nonmagical_equipment_become_dust",
+                        "resurrection": "only_true_resurrection_or_wish"
+                    },
+                    {
+                        "id": "force_wall_destruction",
+                        "condition": "targets_force_creation",
+                        "effect": "automatically_destroys_up_to_10ft",
+                        "examples": ["Wall of Force", "Forcecage"]
+                    },
+                    {
+                        "id": "object_destruction",
+                        "condition": "targets_object",
+                        "effect": "disintegrates_10ft_cube"
+                    }
+                ]
+            }
+        ],
+        
+        "upcast": {
+            "available": true,
+            "per_level": {
+                "damage_dice": "+3d6"
+            },
+            "examples": {
+                "7th": "13d6+40 (avg 85.5)",
+                "8th": "16d6+40 (avg 96)",
+                "9th": "19d6+40 (avg 106.5)"
+            }
+        },
+        
+        "classes": ["sorcerer", "wizard"],
+        
+        "interactions": {
+            "countered_by": [
+                "Shield (if AC enough)",
+                "Counterspell",
+                "DEX save success"
+            ],
+            "destroys": [
+                "Wall of Force (10 ft section)",
+                "Forcecage (10 ft section)",
+                "Prismatic Wall (one layer if DEX fails)"
+            ],
+            "blocked_by": [
+                "Globe of Invulnerability",
+                "Antimagic Field"
+            ]
+        },
+        
+        "tactical_notes": {
+            "strengths": [
+                "Guaranteed kill if 0 HP",
+                "Destroys force effects",
+                "High damage even on partial hit",
+                "Force damage rarely resisted"
+            ],
+            "weaknesses": [
+                "DEX save negates entirely",
+                "Single target",
+                "No effect on success"
+            ],
+            "combo_with": [
+                "Slow (disadvantage on DEX)",
+                "Hold Monster (auto-fail DEX)",
+                "Paralysis effects"
+            ]
+        },
+        
+        "lore_key": "SPELL_DISINTEGRATE_LORE",
+        
+        "tags": ["damage", "force", "destruction", "save_or_nothing", "iconic"]
+    }
+}
+Схема аура-заклинания
+JSON
+
+{
+    "spell": {
+        "id": "spell_spirit_guardians",
+        "name_key": "SPELL_SPIRIT_GUARDIANS_NAME",
+        "desc_key": "SPELL_SPIRIT_GUARDIANS_DESC",
+        
+        "level": 3,
+        "school": "school_conjuration",
+        
+        "casting_time": {
+            "type": "action",
+            "value": 1
+        },
+        
+        "range": {
+            "type": "self",
+            "area": {
+                "type": "emanation",
+                "radius": 15,
+                "unit": "feet"
+            }
+        },
+        
+        "components": {
+            "verbal": true,
+            "somatic": true,
+            "material": {
+                "required": true,
+                "items": ["a holy symbol"],
+                "cost_gp": null,
+                "consumed": false
+            }
+        },
+        
+        "duration": {
+            "type": "time",
+            "value": 10,
+            "unit": "minutes",
+            "concentration": true
+        },
+        
+        "effects": [
+            {
+                "id": "guardian_aura",
+                "type": "aura",
+                "radius": 15,
+                "moves_with": "caster",
+                "affects": {
+                    "who": "creatures_of_your_choice",
+                    "when": "enters_or_starts_turn"
+                },
+                "damage": {
+                    "dice": "3d8",
+                    "type": {
+                        "if_caster_good_neutral": "radiant",
+                        "if_caster_evil": "necrotic"
+                    }
+                },
+                "save": {
+                    "ability": "wis",
+                    "on_success": "half_damage",
+                    "on_failure": "full_damage"
+                },
+                "additional_effects": [
+                    {
+                        "type": "movement_penalty",
+                        "effect": "speed_halved",
+                        "affects": "enemies_in_area"
+                    }
+                ],
+                "appearance": {
+                    "if_good_neutral": "angelic_or_fey_spirits",
+                    "if_evil": "fiendish_spirits"
+                }
+            }
+        ],
+        
+        "upcast": {
+            "available": true,
+            "per_level": {
+                "damage_dice": "+1d8"
+            },
+            "examples": {
+                "4th": "4d8 (avg 18)",
+                "5th": "5d8 (avg 22.5)",
+                "6th": "6d8 (avg 27)",
+                "9th": "9d8 (avg 40.5)"
+            }
+        },
+        
+        "classes": ["cleric"],
+        
+        "tactical_notes": {
+            "strengths": [
+                "Damage every turn to multiple enemies",
+                "Halves enemy speed (difficult to escape)",
+                "Selective targeting (doesn't hurt allies)",
+                "Long duration (10 minutes)",
+                "Moves with caster"
+            ],
+            "synergies": [
+                "Spiritual Weapon (bonus action damage)",
+                "Dodge action (survive in melee)",
+                "Warding Bond (tank for ally)"
+            ],
+            "weaknesses": [
+                "Concentration",
+                "Only 15 ft radius",
+                "WIS save common for undead/fiends"
+            ],
+            "positioning": "Best in melee or narrow passages"
+        },
+        
+        "tags": ["aura", "damage", "radiant", "necrotic", "control", "concentration", "cleric_staple"]
+    }
+}
+📋 ЧЕКЛИСТ ЧАСТИ 3
+Заклинания 4 круга (60)
+ Боевые (20)
+ Контрольные (15)
+ Защитные и усиливающие (15)
+ Утилитарные и лечебные (10)
+Заклинания 5 круга (55)
+ Боевые (18)
+ Контрольные (15)
+ Защитные и восстанавливающие (12)
+ Призывающие и трансформационные (10)
+Заклинания 6 круга (50)
+ Боевые (16)
+ Контрольные и защитные (18)
+ Лечебные и восстанавливающие (8)
+ Призывающие (8)
+JSON схемы
+ Схема заклинания превращения
+ Схема разрушительного заклинания
+ Схема аура-заклинания

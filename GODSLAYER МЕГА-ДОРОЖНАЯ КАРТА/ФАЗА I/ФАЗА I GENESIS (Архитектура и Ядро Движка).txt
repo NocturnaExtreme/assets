@@ -1,0 +1,670 @@
+ФАЗА I: GENESIS (Архитектура и Ядро Движка)
+Создание фундамента — законов физики вселенной и инструментов Демиурга
+📋 ЧЕКЛИСТ ФАЗЫ I
+1.1 — НАСТРОЙКА ПРОЕКТА GODOT
+Базовая конфигурация
+ Создать новый проект Godot 4.x
+ Настроить project.godot:
+ Название проекта: "Godslayer"
+ Разрешение окна: 1920x1080 (с поддержкой масштабирования)
+ Режим растяжения: canvas_items (для пиксельной чёткости текста)
+ Аспект: expand
+ Создать структуру папок (см. структуру выше)
+ Настроить .gitignore для Godot
+ Создать README.md с описанием проекта
+Настройки ввода (Input Map)
+ Определить базовые действия:
+Действие	Клавиша по умолчанию	Описание
+move_up	W, ↑	Движение вверх
+move_down	S, ↓	Движение вниз
+move_left	A, ←	Движение влево
+move_right	D, →	Движение вправо
+confirm	Enter, Space	Подтверждение
+cancel	Escape, Backspace	Отмена
+inventory	I, Tab	Открыть инвентарь
+character	C	Открыть персонажа
+journal	J	Открыть журнал
+map	M	Открыть карту
+rest	R	Отдых
+quick_save	F5	Быстрое сохранение
+quick_load	F9	Быстрая загрузка
+pause	Escape, P	Пауза
+hotbar_1-9	1-9	Быстрые слоты
+1.2 — AUTOLOAD (Глобальные синглтоны)
+Список синглтонов для регистрации в Project Settings
+Порядок	Имя	Файл	Описание
+1	Config	core/autoload/Config.gd	Настройки игры и конфигурация
+2	Events	core/autoload/Events.gd	Глобальная шина событий (сигналы)
+3	DB	core/autoload/DatabaseManager.gd	Загрузчик и кэш всех JSON баз
+4	L10N	core/autoload/Localization.gd	Система локализации
+5	Dice	core/autoload/DiceRoller.gd	Броски кубиков D&D
+6	Game	core/autoload/GameManager.gd	Главный контроллер состояний
+7	Save	core/autoload/SaveManager.gd	Система сохранений
+8	Audio	core/autoload/AudioManager.gd	Управление звуком
+9	UI	core/autoload/UIManager.gd	Управление интерфейсом
+10	Console	core/autoload/DevConsole.gd	Консоль разработчика (отладка)
+1.2.1 — Config.gd (Настройки)
+Путь: res://core/autoload/Config.gd
+
+Функциональность:
+
+ Загрузка/сохранение настроек в user://settings.cfg
+ Категории настроек:
+Категория	Параметры
+display	fullscreen, resolution, vsync, ui_scale
+audio	master_volume, music_volume, sfx_volume, ambience_volume
+gameplay	difficulty, auto_save_interval, combat_speed, text_speed
+controls	keybindings (словарь action -> key)
+accessibility	font_size, high_contrast, screen_reader
+ Метод get_setting(category, key, default)
+ Метод set_setting(category, key, value)
+ Метод save_settings()
+ Метод load_settings()
+ Метод reset_to_defaults()
+ Сигнал setting_changed(category, key, value)
+1.2.2 — Events.gd (Шина событий)
+Путь: res://core/autoload/Events.gd
+
+Функциональность:
+
+ Централизованные сигналы для связи между системами
+Категории сигналов:
+
+Игровой процесс
+ game_started
+ game_loaded(save_slot: int)
+ game_saved(save_slot: int)
+ game_paused(is_paused: bool)
+ game_state_changed(old_state, new_state)
+Игрок
+ player_created(data: Dictionary)
+ player_level_up(new_level: int, stat_points: int, skill_points: int)
+ player_xp_gained(amount: int, source: String)
+ player_died(cause: String)
+ player_respawned
+ player_stat_changed(stat: String, old_val: int, new_val: int)
+ player_resource_changed(resource: String, old_val: float, new_val: float) # HP, MP, Stamina
+Бой
+ combat_started(enemies: Array)
+ combat_ended(result: String) # victory, defeat, fled
+ turn_started(entity_id: String)
+ turn_ended(entity_id: String)
+ action_performed(actor, action: String, target, result: Dictionary)
+ damage_dealt(source, target, amount: int, type: String, is_crit: bool)
+ healing_done(source, target, amount: int)
+ entity_died(entity, killer)
+ status_effect_applied(target, effect_id: String, duration: int)
+ status_effect_removed(target, effect_id: String)
+ status_effect_tick(target, effect_id: String, tick_damage: int)
+Инвентарь
+ item_added(item: Dictionary, quantity: int)
+ item_removed(item: Dictionary, quantity: int)
+ item_equipped(item: Dictionary, slot: String)
+ item_unequipped(item: Dictionary, slot: String)
+ item_used(item: Dictionary, target)
+ item_dropped(item: Dictionary, quantity: int)
+ item_crafted(item: Dictionary)
+ item_broken(item: Dictionary)
+ item_repaired(item: Dictionary)
+ gold_changed(old_amount: int, new_amount: int)
+ inventory_full
+ encumbrance_changed(current: float, max_val: float)
+Мир
+ location_entered(location_id: String, location_data: Dictionary)
+ location_exited(location_id: String)
+ time_advanced(hours: int, new_time: Dictionary)
+ day_changed(new_day: int)
+ weather_changed(old_weather: String, new_weather: String)
+ random_event_triggered(event_id: String, event_data: Dictionary)
+Выживание
+ hunger_changed(value: float, max_val: float)
+ thirst_changed(value: float, max_val: float)
+ fatigue_changed(value: float, max_val: float)
+ temperature_changed(value: float, status: String)
+ needs_critical(need_type: String) # starvation, dehydration, exhaustion
+ disease_contracted(disease_id: String)
+ disease_progressed(disease_id: String, stage: int)
+ disease_cured(disease_id: String)
+ injury_received(body_part: String, injury_type: String, severity: int)
+ injury_healed(body_part: String, injury_type: String)
+NPC и Диалоги
+ dialogue_started(npc_id: String)
+ dialogue_line_shown(speaker: String, text: String)
+ dialogue_choice_made(choice_index: int, choice_text: String)
+ dialogue_ended(npc_id: String)
+ npc_attitude_changed(npc_id: String, old_attitude: int, new_attitude: int)
+Квесты
+ quest_discovered(quest_id: String)
+ quest_started(quest_id: String)
+ quest_objective_updated(quest_id: String, objective_id: String, progress: int)
+ quest_objective_completed(quest_id: String, objective_id: String)
+ quest_completed(quest_id: String)
+ quest_failed(quest_id: String)
+ quest_reward_received(quest_id: String, rewards: Dictionary)
+Репутация
+ reputation_changed(faction_id: String, old_val: int, new_val: int)
+ reputation_rank_changed(faction_id: String, old_rank: String, new_rank: String)
+UI
+ notification_show(text: String, type: String, duration: float)
+ tooltip_show(data: Dictionary, position: Vector2)
+ tooltip_hide
+ popup_show(popup_id: String, data: Dictionary)
+ popup_closed(popup_id: String, result)
+ combat_log_add(text: String, type: String)
+ screen_shake(intensity: float, duration: float)
+1.2.3 — DatabaseManager.gd (База данных)
+Путь: res://core/autoload/DatabaseManager.gd
+
+Функциональность:
+
+ Загрузка всех JSON файлов из res://database/ при старте
+ Кэширование данных в памяти
+ Валидация JSON схем (опционально)
+Методы:
+
+ _ready() — автозагрузка всех баз
+ load_database(path: String) -> Dictionary/Array
+ get_db(db_name: String) -> Variant — получить всю базу
+ get_entry(db_name: String, id: String) -> Dictionary — получить запись по ID
+ find_entries(db_name: String, filter: Dictionary) -> Array — поиск по фильтру
+ get_random_entry(db_name: String, filter: Dictionary = {}) -> Dictionary
+ has_entry(db_name: String, id: String) -> bool
+ get_all_ids(db_name: String) -> Array
+ reload_database(db_name: String) — горячая перезагрузка (для разработки)
+Структура кэша:
+
+text
+
+_cache = {
+    "weapons_swords": [...],
+    "weapons_axes": [...],
+    "armor_helmets": [...],
+    "races": [...],
+    "classes": [...],
+    ...
+}
+Сигналы:
+
+ database_loaded(db_name: String)
+ all_databases_loaded
+ database_error(db_name: String, error: String)
+1.2.4 — Localization.gd (Локализация)
+Путь: res://core/autoload/Localization.gd
+
+Функциональность:
+
+ Поддержка языков: русский (ru), английский (en)
+ Загрузка из CSV файлов (встроенная поддержка Godot)
+ Интерполяция переменных: "Вы нанесли {damage} урона {target}"
+Методы:
+
+ tr(key: String, params: Dictionary = {}) -> String
+ set_language(locale: String)
+ get_language() -> String
+ get_available_languages() -> Array
+Структура CSV:
+
+csv
+
+key,ru,en
+UI_NEW_GAME,Новая игра,New Game
+UI_CONTINUE,Продолжить,Continue
+UI_SETTINGS,Настройки,Settings
+ITEM_SWORD_RUSTY_NAME,Ржавый меч,Rusty Sword
+ITEM_SWORD_RUSTY_DESC,Покрытый ржавчиной клинок. Лучше чем ничего.,A rust-covered blade. Better than nothing.
+COMBAT_HIT,{attacker} попадает по {target} на {damage} урона!,{attacker} hits {target} for {damage} damage!
+COMBAT_CRIT,КРИТИЧЕСКИЙ УДАР! {attacker} наносит {damage} урона {target}!,CRITICAL HIT! {attacker} deals {damage} damage to {target}!
+1.2.5 — DiceRoller.gd (Броски кубиков)
+Путь: res://core/autoload/DiceRoller.gd
+
+Функциональность:
+
+ Парсинг формул D&D: "2d6+3", "1d20", "4d6kh3" (keep highest 3)
+ Типы бросков: NORMAL, ADVANTAGE, DISADVANTAGE
+ Логирование бросков для отображения игроку
+Методы:
+
+Метод	Описание
+roll(formula: String) -> int	Бросок по формуле, возвращает результат
+roll_detailed(formula: String) -> Dictionary	Бросок с деталями (отдельные кубики, модификатор, итог)
+roll_d20(modifier: int, type: RollType) -> Dictionary	Бросок d20 с модификатором
+roll_attack(attack_bonus: int, target_ac: int, type: RollType) -> Dictionary	Бросок атаки
+roll_damage(formula: String, is_crit: bool) -> Dictionary	Бросок урона (удвоение кубиков при крите)
+roll_save(save_bonus: int, dc: int, type: RollType) -> Dictionary	Спас-бросок
+roll_skill(skill_bonus: int, dc: int, type: RollType) -> Dictionary	Проверка навыка
+roll_initiative(dex_mod: int, bonus: int) -> int	Бросок инициативы
+roll_ability_scores() -> Array[int]	Генерация характеристик (4d6kh3 x6)
+d4(count: int) -> int	Быстрый бросок d4
+d6(count: int) -> int	Быстрый бросок d6
+d8(count: int) -> int	Быстрый бросок d8
+d10(count: int) -> int	Быстрый бросок d10
+d12(count: int) -> int	Быстрый бросок d12
+d20(count: int) -> int	Быстрый бросок d20
+d100() -> int	Процентный бросок
+Формат результата roll_detailed:
+
+gdscript
+
+{
+    "formula": "2d6+3",
+    "rolls": [4, 6],      # Отдельные кубики
+    "modifier": 3,
+    "total": 13,
+    "is_nat_1": false,
+    "is_nat_20": false
+}
+Формат результата roll_attack:
+
+gdscript
+
+{
+    "roll": 15,
+    "modifier": 5,
+    "total": 20,
+    "target_ac": 16,
+    "hit": true,
+    "is_critical": false,
+    "is_fumble": false,
+    "roll_type": "NORMAL"
+}
+Сигналы:
+
+ dice_rolled(formula: String, result: int, details: Dictionary)
+1.2.6 — GameManager.gd (Главный контроллер)
+Путь: res://core/autoload/GameManager.gd
+
+Функциональность:
+
+ Управление состояниями игры (FSM)
+ Хранение глобальных переменных и флагов сюжета
+ Управление игровым временем
+ Контроль сложности
+Состояния игры (enum GameState):
+
+Состояние	Описание
+BOOT	Начальная загрузка
+MAIN_MENU	Главное меню
+CHARACTER_CREATION	Создание персонажа
+LOADING	Экран загрузки
+EXPLORATION	Исследование мира
+COMBAT	Пошаговый бой
+DIALOGUE	Диалог с NPC
+INVENTORY	Экран инвентаря
+CHARACTER_SHEET	Экран персонажа
+CRAFTING	Экран крафта
+TRADING	Торговля с NPC
+REST	Отдых/сон
+MAP	Экран карты
+JOURNAL	Журнал квестов
+GAME_OVER	Смерть игрока
+PAUSED	Пауза
+Уровни сложности (enum Difficulty):
+
+Уровень	Модификаторы
+STORY	Враги -50% HP, +50% лут, нет перманентной смерти
+NORMAL	Стандартные значения
+HARD	Враги +50% HP, -25% лут, травмы дольше лечатся
+NIGHTMARE	Враги x2 HP, перманентные травмы, ограниченные сохранения
+IRONMAN	Один слот сохранения, удаляется при смерти
+Игровое время:
+
+gdscript
+
+var game_time = {
+    "year": 1,
+    "month": 1,      # 1-12
+    "week": 1,       # 1-4
+    "day": 1,        # 1-7 (день недели)
+    "day_of_month": 1,  # 1-30
+    "hour": 8,       # 0-23
+    "minute": 0      # 0-59
+}
+Методы:
+
+Метод	Описание
+change_state(new_state: GameState)	Смена состояния
+get_state() -> GameState	Текущее состояние
+can_transition_to(state: GameState) -> bool	Проверка возможности перехода
+start_new_game(character_data: Dictionary)	Начать новую игру
+end_game(reason: String)	Завершить игру
+pause() / unpause() / toggle_pause()	Управление паузой
+advance_time(minutes: int)	Продвинуть время
+get_time_string() -> String	Форматированное время
+set_flag(flag: String, value: bool)	Установить флаг сюжета
+get_flag(flag: String) -> bool	Получить флаг
+set_var(name: String, value)	Установить переменную
+get_var(name: String, default)	Получить переменную
+Переменные:
+
+ current_state: GameState
+ previous_state: GameState
+ difficulty: Difficulty
+ is_paused: bool
+ game_time: Dictionary
+ play_time_seconds: float (реальное время игры)
+ story_flags: Dictionary ({"killed_dragon": true})
+ global_vars: Dictionary ({"gold_donated": 500})
+ current_location_id: String
+ player: Node (ссылка на игрока)
+1.2.7 — SaveManager.gd (Сохранения)
+Путь: res://core/autoload/SaveManager.gd
+
+Функциональность:
+
+ Сохранение в user://saves/
+ Поддержка нескольких слотов (save_1.sav, save_2.sav, ...)
+ Сжатие данных (встроенное в Godot или LZ-сжатие)
+ Автосохранение
+ Защита от повреждения (бэкапы)
+ Режим Ironman (один слот, удаление при смерти)
+Структура сохранения:
+
+gdscript
+
+{
+    "meta": {
+        "version": "1.0.0",
+        "save_date": "2024-01-15T14:30:00",
+        "play_time": 3600.5,  # секунды
+        "player_name": "Валерий",
+        "player_level": 15,
+        "location": "Гнилой лес",
+        "difficulty": "HARD",
+        "screenshot": "base64_thumbnail"  # опционально
+    },
+    "game_state": {
+        "current_state": "EXPLORATION",
+        "game_time": {...},
+        "story_flags": {...},
+        "global_vars": {...}
+    },
+    "player": {
+        "name": "Валерий",
+        "race": "human",
+        "class": "fighter",
+        "level": 15,
+        "xp": 48000,
+        "stats": {...},
+        "skills": {...},
+        "inventory": [...],
+        "equipment": {...},
+        "abilities": [...],
+        "status_effects": [...],
+        "body_state": {...}  # травмы частей тела
+    },
+    "world": {
+        "discovered_locations": [...],
+        "current_location": "dark_forest_03",
+        "location_states": {...},  # изменения в локациях
+        "weather": "rain",
+        "active_events": [...]
+    },
+    "quests": {
+        "active": [...],
+        "completed": [...],
+        "failed": [...]
+    },
+    "reputation": {
+        "faction_id": value,
+        ...
+    },
+    "statistics": {
+        "enemies_killed": 150,
+        "deaths": 3,
+        "items_crafted": 45,
+        ...
+    }
+}
+Методы:
+
+Метод	Описание
+save_game(slot: int) -> bool	Сохранить в слот
+load_game(slot: int) -> bool	Загрузить из слота
+delete_save(slot: int)	Удалить сохранение
+has_save(slot: int) -> bool	Проверить наличие сохранения
+get_save_info(slot: int) -> Dictionary	Получить мета-информацию
+get_all_saves() -> Array[Dictionary]	Список всех сохранений
+quick_save()	Быстрое сохранение (слот 0)
+quick_load()	Быстрая загрузка
+auto_save()	Автосохранение
+export_save(slot: int, path: String)	Экспорт сохранения
+import_save(path: String, slot: int)	Импорт сохранения
+Константы:
+
+ MAX_SLOTS = 10
+ AUTOSAVE_SLOT = 99
+ QUICKSAVE_SLOT = 0
+ SAVE_VERSION = "1.0.0"
+1.2.8 — AudioManager.gd (Аудио)
+Путь: res://core/autoload/AudioManager.gd
+
+Функциональность:
+
+ Управление фоновой музыкой (с кроссфейдом)
+ Звуковые эффекты (SFX) с пулом AudioStreamPlayer
+ Эмбиент-звуки (привязаны к локации/погоде)
+ Адаптивная музыка (Exploration <-> Combat)
+Аудио-шины (Audio Buses):
+
+Шина	Назначение
+Master	Главная громкость
+Music	Фоновая музыка
+SFX	Звуковые эффекты
+Ambience	Фоновые звуки окружения
+Voice	Голоса (для TTS или озвучки)
+UI	Звуки интерфейса
+Методы:
+
+Метод	Описание
+play_music(track: String, fade_duration: float)	Включить музыку
+stop_music(fade_duration: float)	Выключить музыку
+play_sfx(sound: String, volume_db: float, pitch: float)	Проиграть звук
+play_ambience(ambience: String)	Включить эмбиент
+stop_ambience()	Выключить эмбиент
+set_bus_volume(bus: String, volume: float)	Установить громкость шины
+transition_to_combat_music()	Переход к боевой музыке
+transition_to_exploration_music()	Переход к спокойной музыке
+1.2.9 — UIManager.gd (Интерфейс)
+Путь: res://core/autoload/UIManager.gd
+
+Функциональность:
+
+ Управление слоями UI
+ Стек экранов (push/pop)
+ Система всплывающих уведомлений
+ Тултипы
+ Модальные окна
+Слои UI (CanvasLayer):
+
+Слой	Layer	Назначение
+HUD	10	Игровой интерфейс (HP, ресурсы)
+Screens	20	Полноэкранные меню (инвентарь, карта)
+Popups	30	Всплывающие окна
+Tooltips	40	Подсказки
+Notifications	50	Уведомления
+Overlay	60	Затемнение, загрузка
+Debug	100	Отладочная информация
+Методы:
+
+Метод	Описание
+push_screen(screen_id: String, data: Dictionary)	Открыть экран
+pop_screen()	Закрыть текущий экран
+show_popup(popup_id: String, data: Dictionary)	Показать popup
+close_popup(popup_id: String)	Закрыть popup
+show_tooltip(data: Dictionary, position: Vector2)	Показать тултип
+hide_tooltip()	Скрыть тултип
+show_notification(text: String, type: String, duration: float)	Показать уведомление
+show_confirm_dialog(title: String, text: String, callback: Callable)	Диалог подтверждения
+shake_screen(intensity: float, duration: float)	Тряска экрана
+Типы уведомлений:
+
+info — нейтральная информация (синий)
+success — успех (зелёный)
+warning — предупреждение (жёлтый)
+error — ошибка (красный)
+loot — получение предмета (золотой)
+xp — получение опыта (фиолетовый)
+level_up — повышение уровня (особый эффект)
+1.2.10 — DevConsole.gd (Консоль разработчика)
+Путь: res://core/autoload/DevConsole.gd
+
+Функциональность:
+
+ Включение по клавише ~ (тильда) или F12
+ Выполнение команд для отладки
+ История команд (стрелки вверх/вниз)
+ Автодополнение (Tab)
+ Отключается в релизной сборке
+Команды:
+
+Команда	Описание
+help	Список команд
+god	Режим бога (бессмертие)
+noclip	Проход сквозь стены
+give <item_id> [count]	Дать предмет
+spawn <enemy_id>	Заспавнить врага
+kill	Убить всех врагов
+heal	Полное исцеление
+levelup [count]	Повысить уровень
+addxp <amount>	Добавить опыт
+gold <amount>	Установить золото
+tp <location_id>	Телепорт в локацию
+time <hours>	Продвинуть время
+weather <type>	Сменить погоду
+setstat <stat> <value>	Установить характеристику
+setskill <skill> <value>	Установить навык
+quest <quest_id> [complete]	Начать/завершить квест
+flag <flag_name> [value]	Установить флаг сюжета
+reload_db	Перезагрузить базы данных
+reload_ui	Перезагрузить UI
+fps	Показать FPS
+stats	Показать статистику
+save / load	Быстрое сохранение/загрузка
+clear	Очистить консоль
+1.3 — ИГРОВЫЕ СИСТЕМЫ (Systems)
+Список систем
+Система	Файл	Описание	Фаза
+TurnSystem	systems/TurnSystem.gd	Пошаговая логика, очередь ходов	VI
+CombatSystem	systems/CombatSystem.gd	Боевые расчёты, атаки, урон	VI
+InventorySystem	systems/InventorySystem.gd	Управление инвентарём	III
+EquipmentSystem	systems/EquipmentSystem.gd	Экипировка, слоты, требования	III
+CraftingSystem	systems/CraftingSystem.gd	Крафт, рецепты, качество	V
+SurvivalSystem	systems/SurvivalSystem.gd	Голод, жажда, усталость	V
+TimeSystem	systems/TimeSystem.gd	Игровое время, дни, сезоны	V
+WeatherSystem	systems/WeatherSystem.gd	Погода, влияние на геймплей	VII
+DiseaseSystem	systems/DiseaseSystem.gd	Болезни, симптомы, лечение	V
+InjurySystem	systems/InjurySystem.gd	Травмы, части тела	VI
+ReputationSystem	systems/ReputationSystem.gd	Репутация с фракциями	VIII
+QuestSystem	systems/QuestSystem.gd	Квесты, цели, награды	VII
+DialogueSystem	systems/DialogueSystem.gd	Диалоги, выборы, проверки	VII
+AISystem	systems/AISystem.gd	AI врагов и NPC	VI
+LootSystem	systems/LootSystem.gd	Генерация лута, таблицы	III
+EconomySystem	systems/EconomySystem.gd	Экономика, цены	VIII
+1.4 — УТИЛИТЫ (Utils)
+Список утилит
+Утилита	Файл	Описание
+FormulaParser	utils/FormulaParser.gd	Парсинг формул урона, статов
+Pathfinding	utils/Pathfinding.gd	A* для AI и навигации
+RandomTables	utils/RandomTables.gd	Взвешенный случайный выбор
+TextGenerator	utils/TextGenerator.gd	Генерация описаний, имён
+Validators	utils/Validators.gd	Валидация данных
+Helpers	utils/Helpers.gd	Общие вспомогательные функции
+1.5 — СХЕМЫ JSON БАЗ ДАННЫХ
+Общие правила
+ Все ID — snake_case, уникальные
+ Все тексты — через ключи локализации
+ Обязательные поля: id, name_key (ключ локализации)
+ Опциональные поля имеют значения по умолчанию
+Пример базовых схем
+Предмет (Item)
+JSON
+
+{
+    "id": "sword_iron_longsword",
+    "name_key": "ITEM_IRON_LONGSWORD_NAME",
+    "desc_key": "ITEM_IRON_LONGSWORD_DESC",
+    "type": "weapon",
+    "subtype": "sword",
+    "rarity": "common",
+    "weight": 3.0,
+    "volume": 2,
+    "value": 15,
+    "icon": "sword_long_01",
+    "stackable": false,
+    "max_stack": 1,
+    "durability": 100,
+    "requirements": {
+        "str": 10
+    },
+    "properties": {}
+}
+Оружие (дополнительные поля)
+JSON
+
+{
+    "...": "базовые поля Item",
+    "damage_dice": "1d8",
+    "damage_type": "slashing",
+    "properties": ["versatile", "martial"],
+    "versatile_dice": "1d10",
+    "range": 5,
+    "crit_range": 20,
+    "crit_multiplier": 2,
+    "material": "iron",
+    "two_handed": false,
+    "slot": "main_hand"
+}
+Враг (Enemy)
+JSON
+
+{
+    "id": "goblin_warrior",
+    "name_key": "ENEMY_GOBLIN_WARRIOR_NAME",
+    "desc_key": "ENEMY_GOBLIN_WARRIOR_DESC",
+    "type": "humanoid",
+    "subtype": "goblin",
+    "challenge_rating": 0.25,
+    "xp_reward": 50,
+    "stats": {
+        "str": 8, "dex": 14, "con": 10,
+        "int": 10, "wis": 8, "cha": 8
+    },
+    "hp_dice": "2d6",
+    "hp_bonus": 0,
+    "ac": 15,
+    "speed": 30,
+    "attacks": [...],
+    "abilities": [...],
+    "resistances": [],
+    "immunities": [],
+    "vulnerabilities": [],
+    "loot_table": "loot_goblin",
+    "ai_behavior": "aggressive",
+    "ai_params": {}
+}
+📋 ИТОГОВЫЙ ЧЕКЛИСТ ФАЗЫ I
+Проект
+ Создан проект Godot 4.x
+ Настроен project.godot
+ Создана структура папок
+ Настроен Input Map
+ Настроен .gitignore
+Autoload синглтоны
+ Config.gd — настройки
+ Events.gd — события
+ DatabaseManager.gd — базы данных
+ Localization.gd — локализация
+ DiceRoller.gd — кубики
+ GameManager.gd — состояния
+ SaveManager.gd — сохранения
+ AudioManager.gd — звук
+ UIManager.gd — интерфейс
+ DevConsole.gd — консоль разработчика
+Базы данных
+ Определены JSON схемы
+ Созданы пустые JSON файлы
+ Работает загрузка и кэширование
+Локализация
+ Создан ru.csv
+ Создан en.csv
+ Работает переключение языка

@@ -1,0 +1,315 @@
+ФАЗА III: MATERIALISM
+Часть 2: Оружие ближнего боя (120+ базовых видов)
+📋 ОБЗОР СИСТЕМЫ ОРУЖИЯ
+Свойства оружия D&D 5e (расширенные)
+Свойство	ID	Описание
+Лёгкое	light	Можно использовать для боя двумя оружиями
+Фехтовальное	finesse	Можно использовать DEX вместо STR
+Универсальное	versatile	Можно использовать одной или двумя руками (разный урон)
+Двуручное	two_handed	Требует обе руки
+Тяжёлое	heavy	Маленькие существа имеют помеху
+Досягаемость	reach	+5 футов досягаемости
+Метательное	thrown	Можно метать
+Особое	special	Уникальные правила
+Воинское	martial	Требует владение воинским оружием
+Простое	simple	Базовое владение
+Дополнительные свойства (кастомные)
+Свойство	ID	Описание
+Бронебойное	armor_piercing	Игнорирует часть AC от брони
+Оглушающее	stunning	Шанс оглушить при критическом ударе
+Кровопускающее	bleeding	Вызывает кровотечение
+Разоружающее	disarming	Бонус к манёвру обезоруживания
+Защитное	defensive	+1 AC при владении
+Монашеское	monk	Считается монашеским оружием
+Точное	precise	+1 к атаке
+Сокрушающее	sunder	Бонус к разрушению щитов/брони
+Быстрое	fast	+2 к инициативе
+Медленное	slow	-2 к инициативе
+Скрытное	concealable	Легко спрятать
+Полуторное	hand_and_half	Как versatile, но меньше штраф одной рукой
+Типы урона
+Тип	ID	Эффективно против	Неэффективно против
+Рубящий	slashing	Незащищённые, ткань	Скелеты, камень
+Колющий	piercing	Кольчуга, щели в броне	Скелеты, слизи
+Дробящий	bludgeoning	Скелеты, броня, каменные	Слизи (распределяют)
+Формула расчёта финального урона
+text
+
+base_damage = weapon_dice
+material_bonus = material.damage_bonus
+quality_bonus = quality.damage_bonus
+enchantment_bonus = enchantment.damage_bonus
+stat_bonus = STR_mod (или DEX_mod для finesse)
+
+total_damage = base_damage + material_bonus + quality_bonus + enchantment_bonus + stat_bonus
+⚔️ МЕЧИ (35 видов)
+Одноручные мечи
+ID	Название	Урон	Тип	Свойства	Вес	Цена	Требования
+sword_shortsword	Короткий меч	1d6	Колющий	Finesse, Light, Martial	2 lbs	10 gp	—
+sword_longsword	Длинный меч	1d8	Рубящий	Versatile (1d10), Martial	3 lbs	15 gp	STR 10
+sword_broadsword	Широкий меч	1d8	Рубящий	Martial	3 lbs	15 gp	STR 11
+sword_arming_sword	Рыцарский меч	1d8	Рубящий/Колющий	Versatile (1d10), Martial	2.5 lbs	20 gp	STR 10
+sword_rapier	Рапира	1d8	Колющий	Finesse, Martial	2 lbs	25 gp	DEX 12
+sword_scimitar	Скимитар	1d6	Рубящий	Finesse, Light, Martial	3 lbs	25 gp	—
+sword_cutlass	Абордажная сабля	1d6	Рубящий	Finesse, Light, Martial	2.5 lbs	15 gp	—
+sword_saber	Сабля	1d8	Рубящий	Finesse, Martial	2.5 lbs	30 gp	DEX 11
+sword_falchion	Фальшион	1d8	Рубящий	Martial, Bleeding	3.5 lbs	20 gp	STR 11
+sword_messer	Мессер	1d8	Рубящий	Martial	3 lbs	15 gp	STR 10
+sword_gladius	Гладиус	1d6	Колющий	Finesse, Light, Martial	2 lbs	12 gp	—
+sword_spatha	Спата	1d8	Рубящий/Колющий	Versatile (1d10), Martial	2.5 lbs	18 gp	STR 10
+sword_xiphos	Ксифос	1d6	Колющий	Finesse, Light, Martial	1.5 lbs	15 gp	—
+sword_dao	Дао	1d8	Рубящий	Martial	3 lbs	20 gp	STR 10
+sword_jian	Цзянь	1d8	Колющий	Finesse, Martial	2 lbs	30 gp	DEX 12
+sword_shamshir	Шамшир	1d8	Рубящий	Finesse, Martial	2.5 lbs	35 gp	DEX 11
+Двуручные мечи
+ID	Название	Урон	Тип	Свойства	Вес	Цена	Требования
+sword_greatsword	Двуручный меч	2d6	Рубящий	Two-Handed, Heavy, Martial	6 lbs	50 gp	STR 13
+sword_claymore	Клеймор	2d6	Рубящий	Two-Handed, Heavy, Martial, Reach	7 lbs	60 gp	STR 14
+sword_zweihander	Цвайхендер	2d6+1	Рубящий	Two-Handed, Heavy, Martial, Reach, Slow	8 lbs	75 gp	STR 15
+sword_flamberge	Фламберг	2d6	Рубящий	Two-Handed, Heavy, Martial, Bleeding	7 lbs	70 gp	STR 14
+sword_nodachi	Нодати	2d6	Рубящий/Колющий	Two-Handed, Heavy, Martial	6 lbs	65 gp	STR 13
+sword_changdao	Чандао	2d6	Рубящий	Two-Handed, Heavy, Martial	5.5 lbs	55 gp	STR 13
+Полуторные мечи (Bastard Swords)
+ID	Название	Урон	Тип	Свойства	Вес	Цена	Требования
+sword_bastard	Полуторный меч	1d10	Рубящий	Hand-and-Half (2d6), Martial	4 lbs	35 gp	STR 12
+sword_hand_half	Рукоять-с-половиной	1d10	Рубящий/Колющий	Versatile (2d6), Martial	4 lbs	40 gp	STR 12
+sword_estoc	Эсток	1d10	Колющий	Versatile (2d6), Martial, Armor-Piercing	3.5 lbs	45 gp	STR 11
+sword_katana	Катана	1d10	Рубящий	Versatile (2d6), Finesse (двумя руками), Martial	3 lbs	50 gp	DEX 12, STR 10
+sword_tachi	Тати	1d10	Рубящий	Versatile (2d6), Martial	3.5 lbs	55 gp	STR 11
+Специальные мечи
+ID	Название	Урон	Тип	Свойства	Вес	Цена	Требования
+sword_executioner	Палаческий меч	2d8	Рубящий	Two-Handed, Heavy, Martial, Special*	10 lbs	100 gp	STR 16
+sword_hook_sword	Меч-крюк	1d6	Рубящий	Finesse, Light, Martial, Disarming	2 lbs	35 gp	DEX 12
+sword_sword_breaker	Ломатель мечей	1d4	Колющий	Finesse, Light, Martial, Disarming +2	1.5 lbs	40 gp	DEX 13
+sword_wakizashi	Вакидзаси	1d6	Рубящий/Колющий	Finesse, Light, Martial	1.5 lbs	30 gp	—
+sword_khopesh	Хопеш	1d8	Рубящий	Martial, Disarming	3 lbs	25 gp	STR 10
+sword_shotel	Шотел	1d8	Rубящий	Martial, Special (игнорирует щиты)	3 lbs	35 gp	DEX 11
+sword_urumi	Уруми (меч-хлыст)	1d6	Рубящий	Finesse, Reach, Martial, Special	2 lbs	50 gp	DEX 14
+🪓 ТОПОРЫ (18 видов)
+Одноручные топоры
+ID	Название	Урон	Тип	Свойства	Вес	Цена	Требования
+axe_handaxe	Ручной топор	1d6	Рубящий	Light, Thrown (20/60), Simple	2 lbs	5 gp	—
+axe_battleaxe	Боевой топор	1d8	Рубящий	Versatile (1d10), Martial	4 lbs	10 gp	STR 11
+axe_waraxe	Военный топор	1d10	Рубящий	Martial	5 lbs	20 gp	STR 13
+axe_boarding	Абордажный топор	1d6	Рубящий	Light, Martial, Special (крюк)	3 lbs	8 gp	—
+axe_throwing	Метательный топор	1d6	Рубящий	Light, Thrown (30/90), Martial	1.5 lbs	5 gp	—
+axe_tomahawk	Томагавк	1d6	Рубящий	Light, Thrown (40/120), Finesse, Simple	1 lb	3 gp	—
+axe_francesca	Франциска	1d6	Рубящий	Thrown (20/60), Simple, Special (рикошет)	2 lbs	5 gp	—
+axe_bearded	Бородатый топор	1d8	Рубящий	Versatile (1d10), Martial, Disarming	4.5 lbs	15 gp	STR 11
+axe_tabar	Табар	1d8	Рубящий	Martial	4 lbs	12 gp	STR 11
+axe_ono	Оно (японский топор)	1d8	Рубящий	Versatile (1d10), Martial	4 lbs	15 gp	STR 11
+Двуручные топоры
+ID	Название	Урон	Тип	Свойства	Вес	Цена	Требования
+axe_greataxe	Большой топор	1d12	Рубящий	Two-Handed, Heavy, Martial	7 lbs	30 gp	STR 13
+axe_dane	Датский топор	1d12	Рубящий	Two-Handed, Heavy, Martial, Reach	6 lbs	35 gp	STR 13
+axe_executioner	Топор палача	2d8	Рубящий	Two-Handed, Heavy, Martial, Slow	12 lbs	50 gp	STR 16
+axe_double	Двойной топор	1d12	Рубящий	Two-Handed, Heavy, Martial, Special**	10 lbs	60 gp	STR 15
+axe_labrys	Лабрис	1d12	Рубящий	Two-Handed, Heavy, Martial	8 lbs	40 gp	STR 14
+axe_masakari	Масакари	2d6	Рубящий	Two-Handed, Heavy, Martial	8 lbs	45 gp	STR 14
+Специальные топоры
+ID	Название	Урон	Тип	Свойства	Вес	Цена	Требования
+axe_pick	Клевец	1d8	Колющий	Versatile (1d10), Martial, Armor-Piercing	4 lbs	12 gp	STR 11
+axe_mattock	Кайло-топор	1d8	Колющий/Рубящий	Versatile (1d10), Simple	5 lbs	8 gp	STR 12
+🔨 БУЛАВЫ И МОЛОТЫ (20 видов)
+Булавы
+ID	Название	Урон	Тип	Свойства	Вес	Цена	Требования
+mace_club	Дубина	1d4	Дробящий	Light, Simple	2 lbs	1 sp	—
+mace_greatclub	Большая дубина	1d8	Дробящий	Two-Handed, Simple	10 lbs	2 sp	STR 12
+mace_mace	Булава	1d6	Дробящий	Simple	4 lbs	5 gp	—
+mace_heavy_mace	Тяжёлая булава	1d8	Дробящий	Martial	6 lbs	12 gp	STR 11
+mace_flanged	Шестопёр	1d8	Дробящий	Martial, Armor-Piercing	5 lbs	15 gp	STR 11
+mace_morningstar	Моргенштерн	1d8	Колющий	Martial	4 lbs	15 gp	STR 11
+mace_flail	Боевой цеп	1d8	Дробящий	Martial, Special (игнорирует щит частично)	5 lbs	10 gp	STR 11
+mace_heavy_flail	Тяжёлый цеп	1d10	Дробящий	Two-Handed, Martial	8 lbs	20 gp	STR 13
+mace_chain_flail	Цепной цеп	2d4	Дробящий	Two-Handed, Martial, Reach	6 lbs	25 gp	STR 12, DEX 11
+mace_kanabo	Канабо	1d10	Дробящий	Two-Handed, Heavy, Martial, Sunder	10 lbs	20 gp	STR 14
+mace_tetsubo	Тэцубо	2d6	Дробящий	Two-Handed, Heavy, Martial, Sunder, Slow	15 lbs	30 gp	STR 16
+mace_shillelagh	Шилейла	1d6	Дробящий	Finesse, Light, Simple, Monk	2 lbs	5 gp	—
+Молоты
+ID	Название	Урон	Тип	Свойства	Вес	Цена	Требования
+hammer_light	Лёгкий молот	1d4	Дробящий	Light, Thrown (20/60), Simple	2 lbs	2 gp	—
+hammer_warhammer	Боевой молот	1d8	Дробящий	Versatile (1d10), Martial	5 lbs	15 gp	STR 11
+hammer_maul	Кувалда	2d6	Дробящий	Two-Handed, Heavy, Martial, Sunder	10 lbs	10 gp	STR 14
+hammer_sledge	Кузнечный молот	2d6	Дробящий	Two-Handed, Heavy, Simple, Slow	12 lbs	5 gp	STR 15
+hammer_lucerne	Люцернский молот	1d10	Дробящий/Колющий	Two-Handed, Reach, Martial	6 lbs	20 gp	STR 12
+hammer_bec_de_corbin	Клюв ворона	1d10	Колющий	Two-Handed, Reach, Martial, Armor-Piercing	6 lbs	25 gp	STR 12
+hammer_polehammer	Полемолот	1d10	Дробящий	Two-Handed, Reach, Martial	7 lbs	20 gp	STR 12
+hammer_thunder	Громовой молот	2d8	Дробящий	Two-Handed, Heavy, Martial, Stunning	15 lbs	50 gp	STR 16
+🔱 ДРЕВКОВОЕ ОРУЖИЕ (28 видов)
+Копья
+ID	Название	Урон	Тип	Свойства	Вес	Цена	Требования
+polearm_spear	Копьё	1d6	Колющий	Thrown (20/60), Versatile (1d8), Simple	3 lbs	1 gp	—
+polearm_shortspear	Короткое копьё	1d6	Колющий	Thrown (30/90), Light, Simple	2 lbs	1 gp	—
+polearm_longspear	Длинное копьё	1d8	Колющий	Reach, Two-Handed, Martial	5 lbs	5 gp	STR 10
+polearm_pike	Пика	1d10	Колющий	Reach, Two-Handed, Heavy, Martial	18 lbs	5 gp	STR 12
+polearm_sarissa	Сарисса	1d10	Колющий	Reach (15 ft), Two-Handed, Heavy, Martial, Special	20 lbs	8 gp	STR 13
+polearm_javelin	Метательное копьё	1d6	Колющий	Thrown (30/120), Simple	2 lbs	5 sp	—
+polearm_pilum	Пилум	1d6	Колющий	Thrown (30/90), Simple, Special (застревает в щите)	3 lbs	1 gp	—
+polearm_trident	Трезубец	1d6	Колющий	Thrown (20/60), Versatile (1d8), Martial	4 lbs	5 gp	—
+polearm_yari	Яри	1d8	Колющий	Versatile (1d10), Reach (с двух рук), Martial	4 lbs	8 gp	STR 10
+Глефы и алебарды
+ID	Название	Урон	Тип	Свойства	Вес	Цена	Требования
+polearm_glaive	Глефа	1d10	Рубящий	Reach, Two-Handed, Heavy, Martial	6 lbs	20 gp	STR 13
+polearm_halberd	Алебарда	1d10	Рубящий	Reach, Two-Handed, Heavy, Martial	6 lbs	20 gp	STR 13
+polearm_bardiche	Бердыш	1d12	Рубящий	Reach, Two-Handed, Heavy, Martial	8 lbs	25 gp	STR 14
+polearm_voulge	Вульж	1d10	Рубящий	Reach, Two-Handed, Heavy, Martial	7 lbs	18 gp	STR 13
+polearm_guisarme	Гизарма	1d10	Рубящий	Reach, Two-Handed, Heavy, Martial, Disarming	6 lbs	20 gp	STR 12
+polearm_fauchard	Фошар	1d10	Рубящий	Reach, Two-Handed, Martial	5 lbs	15 gp	STR 12
+polearm_ranseur	Рансёр	1d10	Колющий	Reach, Two-Handed, Martial, Disarming	6 lbs	18 gp	STR 12
+polearm_partisan	Партизан	1d10	Колющий	Reach, Two-Handed, Martial	6 lbs	15 gp	STR 12
+polearm_naginata	Нагината	1d10	Рубящий	Reach, Two-Handed, Martial, Finesse (при мастерстве)	5 lbs	30 gp	DEX 12 или STR 11
+polearm_bisento	Бисэнто	1d12	Рубящий	Reach, Two-Handed, Heavy, Martial	8 lbs	35 gp	STR 14
+polearm_woldo	Вольдо	1d10	Рубящий	Reach, Two-Handed, Martial	6 lbs	25 gp	STR 12
+Специальное древковое
+ID	Название	Урон	Тип	Свойства	Вес	Цена	Требования
+polearm_lance	Рыцарское копьё	1d12	Колющий	Reach, Special (верхом одной рукой), Martial	6 lbs	10 gp	STR 12
+polearm_jousting_lance	Турнирное копьё	1d10	Дробящий	Reach, Special (верхом), Martial	8 lbs	15 gp	STR 12
+polearm_boar_spear	Рогатина	1d8	Колющий	Versatile (1d10), Martial, Special (не даёт приблизиться)	5 lbs	8 gp	STR 11
+polearm_ahlspiess	Альшпис	1d8	Колющий	Reach, Two-Handed, Martial, Armor-Piercing	5 lbs	15 gp	STR 11
+polearm_man_catcher	Ловец людей	1d4	Дробящий	Reach, Two-Handed, Martial, Special (захват)	5 lbs	20 gp	STR 11
+polearm_hook_pike	Крючковатая пика	1d10	Колющий	Reach, Two-Handed, Martial, Disarming +2	7 lbs	25 gp	STR 13
+polearm_sodegarami	Содегарами	1d4	Колющий	Reach, Two-Handed, Martial, Special (захват одежды)	4 lbs	15 gp	DEX 11
+polearm_sasumata	Сасумата	1d4	Дробящий	Reach, Two-Handed, Martial, Special (прижать к земле)	5 lbs	12 gp	STR 11
+🗡️ КИНЖАЛЫ И НОЖИ (18 видов)
+Кинжалы
+ID	Название	Урон	Тип	Свойства	Вес	Цена	Требования
+dagger_dagger	Кинжал	1d4	Колющий	Finesse, Light, Thrown (20/60), Simple	1 lb	2 gp	—
+dagger_stiletto	Стилет	1d4	Колющий	Finesse, Light, Concealed, Armor-Piercing, Simple	0.5 lb	5 gp	—
+dagger_dirk	Дирк	1d4+1	Колющий	Finesse, Light, Simple	1 lb	5 gp	—
+dagger_rondel	Рондель	1d4	Колющий	Finesse, Light, Armor-Piercing +1, Simple	1 lb	8 gp	—
+dagger_baselard	Базелард	1d6	Колющий/Рубящий	Finesse, Light, Martial	1.5 lb	10 gp	—
+dagger_bollock	Почечный кинжал	1d4	Колющий	Finesse, Light, Concealed, Simple	1 lb	3 gp	—
+dagger_cinquedea	Чинкведеа	1d6	Колющий/Рубящий	Finesse, Light, Martial	1.5 lb	12 gp	—
+dagger_kris	Крис	1d4	Колющий	Finesse, Light, Bleeding, Martial	1 lb	15 gp	—
+dagger_misericorde	Мизерикорд	1d4	Колющий	Finesse, Light, Armor-Piercing +2, Martial	0.5 lb	10 gp	—
+dagger_main_gauche	Мэн-гош	1d4	Колющий	Finesse, Light, Defensive (+1 AC), Martial	1 lb	15 gp	—
+dagger_tanto	Танто	1d4	Колющий	Finesse, Light, Armor-Piercing, Martial	0.5 lb	12 gp	—
+dagger_karambit	Керамбит	1d4	Рубящий	Finesse, Light, Concealed, Bleeding, Martial	0.5 lb	10 gp	DEX 12
+Ножи
+ID	Название	Урон	Тип	Свойства	Вес	Цена	Требования
+knife_knife	Нож	1d3	Колющий/Рубящий	Finesse, Light, Simple	0.5 lb	5 cp	—
+knife_hunting	Охотничий нож	1d4	Колющий/Рубящий	Finesse, Light, Simple	1 lb	2 gp	—
+knife_skinning	Свежевальный нож	1d3	Рубящий	Finesse, Light, Simple, +2 разделка	0.5 lb	3 gp	—
+knife_butcher	Мясницкий нож	1d4	Рубящий	Light, Simple	1 lb	1 gp	—
+knife_throwing	Метательный нож	1d3	Колющий	Finesse, Light, Thrown (30/90), Simple	0.25 lb	5 sp	—
+knife_kukri	Кукри	1d4+1	Рубящий	Finesse, Light, Martial	1 lb	8 gp	—
+🔗 СПЕЦИАЛЬНОЕ И ЭКЗОТИЧЕСКОЕ (15 видов)
+Гибкое оружие
+ID	Название	Урон	Тип	Свойства	Вес	Цена	Требования
+exotic_whip	Кнут	1d4	Рубящий	Finesse, Reach, Martial	3 lbs	2 gp	—
+exotic_cat_o_nine	Девятихвостка	1d6	Рубящий	Finesse, Reach, Martial, Bleeding	4 lbs	5 gp	DEX 11
+exotic_chain_weapon	Боевая цепь	1d8	Дробящий	Finesse, Reach, Two-Handed, Martial, Disarming	5 lbs	15 gp	DEX 13
+exotic_kusarigama	Кусаригама	1d6/1d4	Рубящий/Дробящий	Finesse, Reach (цепь), Martial, Special	3 lbs	20 gp	DEX 14
+exotic_meteor_hammer	Метеоритный молот	1d8	Дробящий	Reach, Two-Handed, Martial	4 lbs	18 gp	DEX 13
+exotic_rope_dart	Верёвочный дротик	1d4	Колющий	Finesse, Reach, Thrown, Martial	1 lb	8 gp	DEX 13
+Парное и комбинированное
+ID	Название	Урон	Тип	Свойства	Вес	Цена	Требования
+exotic_sai	Сай	1d4	Колющий	Finesse, Light, Monk, Disarming, Martial	1 lb	5 gp	—
+exotic_kama	Кама	1d4	Рубящий	Finesse, Light, Monk, Martial	2 lbs	2 gp	—
+exotic_tonfa	Тонфа	1d4	Дробящий	Finesse, Light, Monk, Defensive (+1 AC), Martial	2 lbs	3 gp	—
+exotic_nunchaku	Нунчаки	1d6	Дробящий	Finesse, Light, Monk, Martial	2 lbs	5 gp	DEX 12
+exotic_three_section	Трёхсекционный посох	1d8	Дробящий	Two-Handed, Monk, Martial, Reach (можно), Disarming	4 lbs	15 gp	DEX 13
+Посохи и шесты
+ID	Название	Урон	Тип	Свойства	Вес	Цена	Требования
+staff_quarterstaff	Боевой посох	1d6	Дробящий	Versatile (1d8), Monk, Simple	4 lbs	2 sp	—
+staff_bo	Бо (длинный посох)	1d8	Дробящий	Two-Handed, Reach, Monk, Martial	5 lbs	5 gp	DEX 10
+staff_jo	Дзё (средний посох)	1d6	Дробящий	Versatile (1d8), Monk, Martial	3 lbs	3 gp	—
+staff_iron	Железный посох	1d8	Дробящий	Versatile (1d10), Martial	8 lbs	15 gp	STR 12
+📋 JSON СХЕМА ОРУЖИЯ
+JSON
+
+{
+    "id": "sword_longsword",
+    "name_key": "WEAPON_LONGSWORD_NAME",
+    "desc_key": "WEAPON_LONGSWORD_DESC",
+    
+    "type": "weapon",
+    "subtype": "sword",
+    "category": "melee",
+    "proficiency": "martial",
+    
+    "base_damage": {
+        "dice": "1d8",
+        "type": "slashing"
+    },
+    
+    "versatile_damage": {
+        "dice": "1d10",
+        "type": "slashing"
+    },
+    
+    "properties": ["versatile", "martial"],
+    
+    "weight": 3.0,
+    "volume": 3,
+    "base_value": 1500,
+    
+    "requirements": {
+        "str": 10,
+        "dex": 0
+    },
+    
+    "durability_max": 100,
+    
+    "default_material": "mat_steel",
+    "allowed_materials": [
+        "mat_iron", "mat_steel", "mat_high_steel", 
+        "mat_mithril", "mat_adamantine", "mat_cold_iron"
+    ],
+    
+    "crafting": {
+        "skill": "skill_weaponsmithing",
+        "skill_level": 40,
+        "time_hours": 8,
+        "materials": [
+            {"id": "mat_steel", "amount": 2, "unit": "ingots"},
+            {"id": "mat_leather", "amount": 0.5, "unit": "sq_ft"}
+        ],
+        "tools": ["forge", "smithing_tools", "anvil"]
+    },
+    
+    "slots": {
+        "main_hand": true,
+        "off_hand": true
+    },
+    
+    "enchantment_slots": 2,
+    
+    "animations": {
+        "attack": "slash_vertical",
+        "thrust": "thrust_forward"
+    },
+    
+    "sounds": {
+        "swing": "sword_swing",
+        "hit_flesh": "blade_flesh",
+        "hit_armor": "blade_metal",
+        "parry": "blade_parry"
+    },
+    
+    "tags": ["blade", "one_handed", "versatile", "common", "standard"]
+}
+📋 ЧЕКЛИСТ ЧАСТИ 2
+Мечи (35)
+ Одноручные (16)
+ Двуручные (6)
+ Полуторные (5)
+ Специальные (7)
+Топоры (18)
+ Одноручные (10)
+ Двуручные (6)
+ Специальные (2)
+Булавы и молоты (20)
+ Булавы (12)
+ Молоты (8)
+Древковое (28)
+ Копья (9)
+ Глефы и алебарды (11)
+ Специальное (8)
+Кинжалы и ножи (18)
+ Кинжалы (12)
+ Ножи (6)
+Экзотическое (15)
+ Гибкое оружие (6)
+ Парное (5)
+ Посохи (4)
